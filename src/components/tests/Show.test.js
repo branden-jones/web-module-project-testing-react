@@ -44,22 +44,29 @@ test('renders same number of options seasons are passed in', () => {
 
 test('handleSelect is called when an season is selected', () => {
     const handleSelect = jest.fn();
-    render(<Show show={testShow} selectedSeason={'none'} handleSelect={handleSelect} />)
+    render(<Show
+         show={testShow} 
+         selectedSeason={'none'} 
+         handleSelect={handleSelect} />)
     const select = screen.getByLabelText(/select a season/i);
-    fireEvent.select(select, ['1']);
+    userEvent.selectOptions(select, ['1']);
 
-    expect(handleSelect).toHaveBeenCalledWith();
-    
+    expect(handleSelect).toBeCalled();
 
-render(<Show show={testShow} selectedSeason={'none'}  />)
 
-userEvent.selectOptions(
-    screen.getByRole('combobox'),
-    screen.getbyRole('option', { name: 'Season 2'}),
-)
 
-expect(screen.getByRole('option', { name: 'Season 2'}).selected).toBe(true)
+// render(<Show show={testShow} selectedSeason={'none'}  />)
+
+// userEvent.selectOptions(
+//     screen.getByRole('combobox'),
+//     screen.getbyRole('option', { name: 'Season 2'}),
+// )
+
+// expect(screen.getByRole('option', { name: 'Season 2'}).selected).toBe(true)
 });
+
+
+
 
 
 

@@ -14,11 +14,11 @@ const Show = (props) => {
       <p>{show.summary}</p>
 
       <label htmlFor="seasons">Select A Season</label><br />
-      <select onChange={handleSelect} name="seasons" id="seasons">
+      <select onChange={handleSelect} name="seasons" id="seasons" role='combobox'>
         <option value="none"></option>
         {
           show.seasons.map(season => {
-            return (<option data-testid="season-option" key={season.id} value={season.id}>{season.name}</option>);
+            return (<option data-testid="season-option" key={season.id} value={season.id} role='option'>{season.name}</option>);
           })
         }
       </select>
